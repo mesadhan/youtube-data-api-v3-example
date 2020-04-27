@@ -1,0 +1,84 @@
+<html>
+<header>
+
+</header>
+
+<body>
+
+<h1>Youtube Data Api</h1>
+<p>Please Login first...</p>
+
+<button style="color: red" id="authorize-button" onclick="handleAuthClick()">Login</button>
+<button id="signout-button" onclick="handleSignoutClick()">Logout</button>
+
+
+<div id="content" style="margin: 30px;">
+
+    <button onclick="getPlaylistItems()">Load Playlist</button>
+    <button onclick="getChannelInformation()">Get Channel Information</button>
+
+    <hr>
+
+
+    <div class="post-sign-in">
+        <div>
+            <img id="channel-thumbnail">
+            <span id="channel-name"></span>
+        </div>
+
+        <div>
+            <label for="title">Title:</label>
+            <input id="title" type="text" value="Default Title">
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description">Default description</textarea>
+        </div>
+        <div>
+            <label for="privacy-status">Privacy Status:</label>
+            <select id="privacy-status">
+                <option>public</option>
+                <option>unlisted</option>
+                <option>private</option>
+            </select>
+        </div>
+
+        <div>
+            <input input type="file" id="file" class="button" accept="video/*">
+            <button id="button">Upload Video</button>
+
+            <div class="during-upload">
+                <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span
+                        id="total-bytes"></span> bytes)</p>
+                <progress id="upload-progress" max="1" value="0"></progress>
+            </div>
+
+            <div class="post-upload">
+                <br>
+                <a id="video-url" target="_blank" href="https://www.youtube.com">Video Url is Pending...</a>
+                <p>Uploaded video with id <span style="color: red;" id="video-id"></span>. Polling for status...</p>
+                <ul id="post-upload-status"></ul>
+                <div id="player"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+<script src="js/cors_upload.js"></script>
+<script src="js/upload_video.js"></script>
+<script src="js/main.js"></script>
+<script src="js/YoutubeDataApi.js"></script>
+<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){}; initApiClient()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+
+<script async defer src="https://apis.google.com/js/client:plusone.js" onload="this.onload=function(){}; render()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+
+</body>
+</html>
